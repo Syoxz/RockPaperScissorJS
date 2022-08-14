@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Simple Rock Paper Scissor</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    
+    <div class = "center">
+        <h3> Play Rock, Paper or Scissor</h3>
+        <button class = "btn" onclick="playRockPaperScissor(getUserChoice(),computerChoice())">Play</button>
+    </div>
+</body>
+<script>
+    function playRockPaperScissor(userChoice, computerChoice){
+        if (checkIfInputIsValid(userChoice)){
+            if (userChoice === computerChoice){
+               alertWinner(userChoice, computerChoice, "Nobody");
+            }
+            // User won
+            else if (userChoice === "PAPER" && computerChoice === "ROCK" || userChoice === "SCISSOR" && computerChoice === "PAPER" || 
+                                                                            userChoice === "ROCK" && computerChoice === "SCISSOR") {
+                    alertWinner (userChoice, computerChoice, "You");
+            }
+            // Computer won
+            else if (computerChoice === "PAPER" && userChoice === "ROCK" || computerChoice === "SCISSOR" && computerChoice === "PAPER" ||
+                                                                            computerChoice=== "ROCK" && userChoice === "SCISSOR") {
+                    alertWinner (userChoice, computerChoice, "Computer");
+            }
+            
+        }
+        else {
+            alert ("Invalid Input");
+        }
+    }
+
+    function alertWinner (userChoice, computerChoice, winner){
+        alert ("Your Choice: " + userChoice + "\n" + "Computer Choice: " + computerChoice + "\n" + winner + " won!");
+    }
+
+    function getUserChoice (){
+        return prompt("Rock, Paper or Scissor?").toUpperCase();
+        
+    }
+
+    function checkIfInputIsValid (input){
+        return input === "ROCK" || input === "PAPER" || input === "SCISSOR"
+    }
+
+    function computerChoice (){
+        var choices = Array ("Rock", "Paper", "Scissor");
+        return (choices[Math.floor(Math.random()*choices.length)]).toUpperCase();
+    }
+</script>
+</html>
