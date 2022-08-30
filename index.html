@@ -6,54 +6,55 @@
     <title>Simple Rock Paper Scissor</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
 <body>
-    
-    <div class = "center">
-        <h3> Play Rock, Paper or Scissor</h3>
-        <button class = "btn" onclick="playRockPaperScissor(getUserChoice(),computerChoice())">Play</button>
-    </div>
+<h3 class = "justify-content-center white-text"> Play Rock, Paper or Scissor</h3>
+<div class = "center">
+    <button class="btn"><i class="fas fa-hand-rock"></i>Rock</button>
+    <button class="btn">Paper</button>
+    <button class="btn">Scissor</button>
+</div>
+
 </body>
 <script>
-    function playRockPaperScissor(userChoice, computerChoice){
-        if (checkIfInputIsValid(userChoice)){
-            if (userChoice === computerChoice){
-               alertWinner(userChoice, computerChoice, "Nobody");
+    function playRockPaperScissor(userChoice, computerChoice) {
+        if (checkIfInputIsValid(userChoice)) {
+            if (userChoice === computerChoice) {
+                alertWinner(userChoice, computerChoice, "Nobody");
             }
             // User won
-            else if (userChoice === "PAPER" && computerChoice === "ROCK" || userChoice === "SCISSOR" && computerChoice === "PAPER" || 
-                                                                            userChoice === "ROCK" && computerChoice === "SCISSOR") {
-                    alertWinner (userChoice, computerChoice, "You");
+            else if (userChoice === "PAPER" && computerChoice === "ROCK" || userChoice === "SCISSOR" && computerChoice === "PAPER" ||
+                userChoice === "ROCK" && computerChoice === "SCISSOR") {
+                alertWinner(userChoice, computerChoice, "You");
             }
             // Computer won
             else if (computerChoice === "PAPER" && userChoice === "ROCK" || computerChoice === "SCISSOR" && computerChoice === "PAPER" ||
-                                                                            computerChoice=== "ROCK" && userChoice === "SCISSOR") {
-                    alertWinner (userChoice, computerChoice, "Computer");
+                computerChoice === "ROCK" && userChoice === "SCISSOR") {
+                alertWinner(userChoice, computerChoice, "Computer");
             }
-            
-        }
-        else {
-            alert ("Invalid Input");
+
+        } else {
+            alert("Invalid Input");
         }
     }
 
-    function alertWinner (userChoice, computerChoice, winner){
-        alert ("Your Choice: " + userChoice + "\n" + "Computer Choice: " + computerChoice + "\n" + winner + " won!");
+    function alertWinner(userChoice, computerChoice, winner) {
+        alert("Your Choice: " + userChoice + "\n" + "Computer Choice: " + computerChoice + "\n" + winner + " won!");
     }
 
-    function getUserChoice (){
+    function getUserChoice() {
         return prompt("Rock, Paper or Scissor?").toUpperCase();
-        
+
     }
 
-    function checkIfInputIsValid (input){
+    function checkIfInputIsValid(input) {
         return input === "ROCK" || input === "PAPER" || input === "SCISSOR"
     }
 
-    function computerChoice (){
-        var choices = Array ("Rock", "Paper", "Scissor");
-        return (choices[Math.floor(Math.random()*choices.length)]).toUpperCase();
+    function computerChoice() {
+        var choices = Array("Rock", "Paper", "Scissor");
+        return (choices[Math.floor(Math.random() * choices.length)]).toUpperCase();
     }
 </script>
 </html>
