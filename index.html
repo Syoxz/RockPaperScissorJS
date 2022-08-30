@@ -46,7 +46,7 @@
 
         }
         // Computer won
-        else if (computer === "Paper" && this.id === "Rock" || computer === "Scissor" && computer === "Paper" ||
+        else if (computer === "Paper" && this.id === "Rock" || computer === "Scissor" && this.id === "Paper" ||
             computer === "Rock" && this.id === "Scissor") {
             computerCount = computerCount + 1;
             printWinner(computer, this.id, "Computer won!");
@@ -58,7 +58,7 @@
     }
 
     function printWinner(computerChoice, userChoice, gameState) {
-        playersChoices.innerText = "Your Choice: " + userChoice + " | " + "Computer Choice: " + computerChoice;
+        playersChoices.innerText = "You : " + userChoice + " | " + "Computer: " + computerChoice;
         gameStateField.innerText = gameState;
         winnerField.innerText = "Your Count: " + userCount + "\n" + " Computers Count: " + computerCount;
         console.log("User: " + userCount);
