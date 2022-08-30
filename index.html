@@ -15,15 +15,17 @@
     <button class="btn" id="Paper">Paper</button>
     <button class="btn" id="Scissor"> Scissor</button>
 </div>
-<div id="gameState" class="justify-content-center white-text"></div>
+<div id="playersChoices" class="justify-content-center white-text mt-2"></div>
+<div id="gameStateField" class="justify-content-center white-text mt-2">
+</div>
 <div id="winnerCount" class="justify-content-center white-text mt-4">
-
 </div>
 
 </body>
 <script>
     const winnerField = document.getElementById("winnerCount");
-    const gameStateField = document.getElementById("gameState");
+    const playersChoices = document.getElementById("playersChoices");
+    const gameStateField = document.getElementById("gameStateField");
     const buttons = document.querySelectorAll(".btn");
     buttons.forEach(button => button.addEventListener("click", playRockPaperScissor))
 
@@ -49,12 +51,15 @@
             computerCount = computerCount + 1;
             printWinner(computer, this.id, "Computer won!");
 
+        } else {
+            printWinner(computer, this.id, "Draw!");
         }
         console.log(this.id);
     }
 
     function printWinner(computerChoice, userChoice, gameState) {
-        gameStateField.textContent = gameState;
+        playersChoices.innerText = "Your Choice: " + userChoice + " | " + "Computer Choice: " + computerChoice;
+        gameStateField.innerText = gameState;
         winnerField.innerText = "Your Count: " + userCount + "\n" + " Computers Count: " + computerCount;
         console.log("User: " + userCount);
         console.log("Computer: " + computerCount);
