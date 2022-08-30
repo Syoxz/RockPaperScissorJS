@@ -39,30 +39,29 @@
 
     function playRockPaperScissor() {
         const computer = computerChoice();
-        if (this.id === "Paper" && computer === "Rock" || this.id === "Scissor" && computer === "Paper" ||
-            this.id === "ROCK" && computer === "SCISSOR") {
+        const userChoice = this.id;
+        if (userChoice === "Paper" && computer === "Rock" || userChoice === "Scissor" && computer === "Paper" ||
+            userChoice === "Rock" && computer === "Scissor") {
             userCount = userCount + 1;
-            printWinner(computer, this.id, "You won!");
+            printWinner(computer, userChoice, "You won!");
 
         }
         // Computer won
-        else if (computer === "Paper" && this.id === "Rock" || computer === "Scissor" && this.id === "Paper" ||
-            computer === "Rock" && this.id === "Scissor") {
+        else if (computer === "Paper" && userChoice === "Rock" || computer === "Scissor" && userChoice === "Paper" ||
+            computer === "Rock" && userChoice=== "Scissor") {
             computerCount = computerCount + 1;
-            printWinner(computer, this.id, "Computer won!");
+            printWinner(computer, userChoice, "Computer won!");
 
         } else {
-            printWinner(computer, this.id, "Draw!");
+            printWinner(computer, userChoice, "Draw!");
         }
-        console.log(this.id);
     }
 
     function printWinner(computerChoice, userChoice, gameState) {
         playersChoices.innerText = "You : " + userChoice + " | " + "Computer: " + computerChoice;
         gameStateField.innerText = gameState;
         winnerField.innerText = "Your Count: " + userCount + "\n" + " Computers Count: " + computerCount;
-        console.log("User: " + userCount);
-        console.log("Computer: " + computerCount);
+
     }
 
 </script>
