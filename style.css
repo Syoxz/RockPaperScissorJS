@@ -17,6 +17,15 @@ body {
 }
 .white-text {
     color: white;
+
+}
+
+.mt-2 {
+    margin-top: 1em;
+}
+
+.mt-4 {
+    margin-top: 2em;
 }
 
 .btn {

@@ -9,52 +9,56 @@
 
 </head>
 <body>
-<h3 class = "justify-content-center white-text"> Play Rock, Paper or Scissor</h3>
-<div class = "center">
-    <button class="btn"><i class="fas fa-hand-rock"></i>Rock</button>
-    <button class="btn">Paper</button>
-    <button class="btn">Scissor</button>
+<h3 class="justify-content-center white-text"> Play Rock, Paper or Scissor</h3>
+<div class="center">
+    <button class="btn" id="Rock"> Rock</button>
+    <button class="btn" id="Paper">Paper</button>
+    <button class="btn" id="Scissor"> Scissor</button>
+</div>
+<div id="gameState" class="justify-content-center white-text"></div>
+<div id="winnerCount" class="justify-content-center white-text mt-4">
+
 </div>
 
 </body>
 <script>
-    function playRockPaperScissor(userChoice, computerChoice) {
-        if (checkIfInputIsValid(userChoice)) {
-            if (userChoice === computerChoice) {
-                alertWinner(userChoice, computerChoice, "Nobody");
-            }
-            // User won
-            else if (userChoice === "PAPER" && computerChoice === "ROCK" || userChoice === "SCISSOR" && computerChoice === "PAPER" ||
-                userChoice === "ROCK" && computerChoice === "SCISSOR") {
-                alertWinner(userChoice, computerChoice, "You");
-            }
-            // Computer won
-            else if (computerChoice === "PAPER" && userChoice === "ROCK" || computerChoice === "SCISSOR" && computerChoice === "PAPER" ||
-                computerChoice === "ROCK" && userChoice === "SCISSOR") {
-                alertWinner(userChoice, computerChoice, "Computer");
-            }
+    const winnerField = document.getElementById("winnerCount");
+    const gameStateField = document.getElementById("gameState");
+    const buttons = document.querySelectorAll(".btn");
+    buttons.forEach(button => button.addEventListener("click", playRockPaperScissor))
 
-        } else {
-            alert("Invalid Input");
-        }
-    }
-
-    function alertWinner(userChoice, computerChoice, winner) {
-        alert("Your Choice: " + userChoice + "\n" + "Computer Choice: " + computerChoice + "\n" + winner + " won!");
-    }
-
-    function getUserChoice() {
-        return prompt("Rock, Paper or Scissor?").toUpperCase();
-
-    }
-
-    function checkIfInputIsValid(input) {
-        return input === "ROCK" || input === "PAPER" || input === "SCISSOR"
-    }
+    let userCount = 0;
+    let computerCount = 0;
 
     function computerChoice() {
-        var choices = Array("Rock", "Paper", "Scissor");
-        return (choices[Math.floor(Math.random() * choices.length)]).toUpperCase();
+        const choices = Array("Rock", "Paper", "Scissor");
+        return (choices[Math.floor(Math.random() * choices.length)]);
     }
+
+    function playRockPaperScissor() {
+        const computer = computerChoice();
+        if (this.id === "Paper" && computer === "Rock" || this.id === "Scissor" && computer === "Paper" ||
+            this.id === "ROCK" && computer === "SCISSOR") {
+            userCount = userCount + 1;
+            printWinner(computer, this.id, "You won!");
+
+        }
+        // Computer won
+        else if (computer === "Paper" && this.id === "Rock" || computer === "Scissor" && computer === "Paper" ||
+            computer === "Rock" && this.id === "Scissor") {
+            computerCount = computerCount + 1;
+            printWinner(computer, this.id, "Computer won!");
+
+        }
+        console.log(this.id);
+    }
+
+    function printWinner(computerChoice, userChoice, gameState) {
+        gameStateField.textContent = gameState;
+        winnerField.innerText = "Your Count: " + userCount + "\n" + " Computers Count: " + computerCount;
+        console.log("User: " + userCount);
+        console.log("Computer: " + computerCount);
+    }
+
 </script>
 </html>
