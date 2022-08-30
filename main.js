@@ -45,7 +45,7 @@ function computerWon(userChoice, computerChoice) {
 function printWinner(computerChoice, userChoice, gameState) {
     playersChoices.innerText = "You : " + userChoice + " | " + "Computer: " + computerChoice;
     gameStateField.innerText = gameState;
-    winnerField.innerText = "Your Count: " + userCount + "\n" + " Computers Count: " + computerCount;
+    winnerField.innerText = "You: " + userCount + "\n" + " Computer: " + computerCount;
 
 }
 
